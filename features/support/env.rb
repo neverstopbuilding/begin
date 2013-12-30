@@ -8,11 +8,13 @@ rescue Bundler::BundlerError => e
 end
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
-require 'begin'
+require 'begin/generator'
 
 require 'rspec/expectations'
 require 'aruba/cucumber'
 
 Before do
-  @dirs = ['build/tmp']
+  dir = 'build/tmp'
+  FileUtils.rm_rf dir if File.directory?(dir)
+  @dirs = [dir]
 end

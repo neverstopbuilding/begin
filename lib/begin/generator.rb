@@ -7,7 +7,6 @@ module Begin
     argument :package_name
 
     def self.source_root
-      puts "got here"
       File.dirname(__FILE__)
     end
 
@@ -19,5 +18,12 @@ module Begin
         empty_directory package_name
       end
     end
+
+    def create_lib_structure
+      empty_directory "#{package_name}/lib"
+      empty_directory "#{package_name}/lib/#{package_name}"
+    end
+
+
   end
 end
