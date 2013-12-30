@@ -10,20 +10,9 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
+task default: :build
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = 'begin'
-  gem.homepage = 'http://github.com/neverstopbuilding/begin'
-  gem.license = 'MIT'
-  gem.summary = 'Quickly create a basic ruby package with clean coding tools.'
-  gem.description = 'I don\'t want a single thing preventing me from starting off (even the smallest) library without a good infrastructure to support TDD and clean coding standards. I got tired of reconfiguring the same tools in basically the same way every time. With this one command you can set up a library, fire up Guard, and jump right into the TDD loop: Red, Green, Refactor.'
-  gem.email = 'jasonrobertfox@gmail.com'
-  gem.authors = ['Jason Fox']
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
+task build: [:quality, :system]
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
@@ -43,16 +32,4 @@ require 'rubocop/rake_task'
 Rubocop::RakeTask.new
 
 require 'cucumber/rake/task'
-Cucumber::Rake::Task.new(:features)
-
-task default: :spec
-
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ''
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "begin #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+Cucumber::Rake::Task.new(:system)
