@@ -6,6 +6,8 @@ module Begin
 
     argument :package_name
 
+    @ruby_version = '2.0.0'
+
     def self.source_root
       "#{File.dirname(__FILE__)}/../"
     end
@@ -26,7 +28,23 @@ module Begin
     def create_rspec_structure
       empty_directory "#{package_name}/spec/unit/#{package_name}"
       empty_directory "#{package_name}/spec/integration/#{package_name}"
-      template 'templates/spec/spec_helper.tt', "#{package_name}/spec/spec_helper.rb"
+      create_file_from_template 'spec', 'spec_helper.rb'
+      create_file_from_template '.rspec'
     end
+
+    def create_rvm_files
+      create_file_from_template '.ruby-version'
+      create_file_from_template '.ruby-gemset'
+    end
+
+    private
+
+    def create_file_from_template(*args)
+      path = args.reduce {|base, arg| File.join(base, arg) }
+      tt = File.join('templates', path) + '.tt'
+      file = File.join(package_name, path)
+      template tt, file
+    end
+
   end
 end
