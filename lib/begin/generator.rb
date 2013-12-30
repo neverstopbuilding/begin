@@ -26,8 +26,8 @@ module Begin
     end
 
     def create_rspec_structure
-      empty_directory "#{package_name}/spec/unit/#{package_name}"
-      empty_directory "#{package_name}/spec/integration/#{package_name}"
+      empty_directory "#{package_name}/spec/unit/lib/#{package_name}"
+      empty_directory "#{package_name}/spec/integration/lib/#{package_name}"
       create_file_from_template 'spec', 'spec_helper.rb'
       create_file_from_template '.rspec'
     end
@@ -35,6 +35,12 @@ module Begin
     def create_rvm_files
       create_file_from_template '.ruby-version'
       create_file_from_template '.ruby-gemset'
+    end
+
+    def create_support_files
+      %w(.gitignore .rubocop.yml Gemfile Rakefile README.md .travis.yml Guardfile .blam).each do |file|
+        create_file_from_template file
+      end
     end
 
     private

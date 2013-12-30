@@ -2,6 +2,7 @@ Then(/^"(.*?)" should contain the correct files$/) do |package_directory|
   assert_lib_files package_directory
   assert_spec_files package_directory
   assert_rvm_files package_directory
+  assert_support_files package_directory
 end
 
 def assert_lib_files(dir)
@@ -10,13 +11,24 @@ def assert_lib_files(dir)
 end
 
 def assert_spec_files(dir)
-  check_directory_presence(["#{dir}/spec/unit/#{dir}"], true)
-  check_directory_presence(["#{dir}/spec/integration/#{dir}"], true)
-  check_file_presence(["#{dir}/spec/spec_helper.rb"], true)
-  check_file_presence(["#{dir}/.rspec"], true)
+  check_directory_presence(["#{dir}/spec/unit/lib/#{dir}"], true)
+  check_directory_presence(["#{dir}/spec/integration/lib/#{dir}"], true)
+  file_exists? dir, 'spec', 'spec_helper.rb'
+  file_exists? dir, '.rspec'
 end
 
 def assert_rvm_files(dir)
-  check_file_presence(["#{dir}/.ruby-gemset"], true)
-  check_file_presence(["#{dir}/.ruby-version"], true)
+  %w(.ruby-gemset .ruby-version).each do |file|
+    file_exists? dir, file
+  end
+end
+
+def assert_support_files(dir)
+  %w(.gitignore .rubocop.yml Gemfile Rakefile README.md .travis.yml Guardfile .blam).each do |file|
+    file_exists? dir, file
+  end
+end
+
+def file_exists?(*args)
+  check_file_presence([args.reduce { |base, file| File.join(base, file) }], true)
 end
