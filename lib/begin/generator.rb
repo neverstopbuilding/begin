@@ -5,8 +5,7 @@ module Begin
     include Thor::Actions
 
     argument :package_name
-
-    @ruby_version = '2.0.0'
+    class_option :github_user, default: nil
 
     def self.source_root
       "#{File.dirname(__FILE__)}/../"
@@ -38,6 +37,7 @@ module Begin
     end
 
     def create_support_files
+      @ruby_version = '2.0.0'
       %w(.gitignore .rubocop.yml Gemfile Rakefile README.md .travis.yml Guardfile .blam).each do |file|
         create_file_from_template file
       end
@@ -49,7 +49,13 @@ module Begin
       path = args.reduce {|base, arg| File.join(base, arg) }
       tt = File.join('templates', path) + '.tt'
       file = File.join(package_name, path)
-      template tt, file
+      template tt, file, get_options
+    end
+
+    def get_options
+
+
+      {ruby_version: '2.0.0'}
     end
 
   end

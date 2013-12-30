@@ -1,0 +1,4 @@
+language: ruby
+rvm:
+  - <%= config[:ruby_version] %>
+bundler_args: --without development

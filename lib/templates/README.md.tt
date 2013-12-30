@@ -1,0 +1,15 @@
+#<%= package_name.capitalize %> Documentation
+<% if options[:github_user] %>
+[![Build Status](https://travis-ci.org/<%= options[:github_user] %>/<%= package_name %>.png?branch=develop)](https://travis-ci.org/<%= options[:github_user] %>/<%= package_name %>) [![Coverage Status](https://coveralls.io/repos/<%= options[:github_user] %>/<%= package_name %>/badge.png)](https://coveralls.io/r/<%= options[:github_user] %>/<%= package_name %>) [![Code Climate](https://codeclimate.com/github/<%= options[:github_user] %>/<%= package_name %>.png)](https://codeclimate.com/github/<%= options[:github_user] %>/<%= package_name %>)
+<% end %>
+###Development
+
+    bundle exec guard
+
+This will start guard watching and running the tests on change.
+
+###Testing
+
+- `rake` - Runs all of the tests.
+- `rake build` - Runs a subset of build tests, as specified in the Rakefile.
+- `rake quality` - Analysis of code quality with Rubocop.

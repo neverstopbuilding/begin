@@ -1,0 +1,19 @@
+# Encoding: utf-8
+
+source 'https://rubygems.org'
+ruby '<%= config[:ruby_version] %>'
+
+# Dependencies
+
+group :development do
+  gem 'rake'
+  gem 'rspec', '2.14.1'
+  gem 'rubocop'
+  gem 'coveralls'
+  gem 'guard', '2.2.3'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'blam'
+  gem 'flay'
+  gem 'reek'
+end
