@@ -1,9 +1,9 @@
-Feature: something something
-  In order to something something
-  A user something something
-  something something something
+Feature: Create default package
+  In order start the TDD cycle immediately
+  As a clean coder
+  I want to quickly create a package to support good development practices
 
-  Scenario: something something
-    Given inspiration
-    When I create a sweet new gem
-    Then everyone should see how awesome I am
+  Scenario: Create package
+    Given I run `begin mypackage`
+    Then a directory named "mypackage" should exist
+    And "mypackage" should contain the correct files

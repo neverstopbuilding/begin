@@ -11,3 +11,8 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 require 'begin'
 
 require 'rspec/expectations'
+require 'aruba/cucumber'
+
+Before do
+  @dirs = ['build/tmp']
+end
