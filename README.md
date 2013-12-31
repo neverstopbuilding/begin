@@ -5,7 +5,7 @@
 >
 > **And** I want it to be clean.
 >
-> **When** I type `begin my-package`.
+> **When** I type `begin my_package`.
 >
 > **And** install the dependencies.
 >
