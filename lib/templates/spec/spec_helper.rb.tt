@@ -31,5 +31,3 @@ coverage = ENV['COVERAGE'] == 'true' ? true : false
 # Configuration
 configure_coverage if coverage
 configure_rspec_defaults
-
-

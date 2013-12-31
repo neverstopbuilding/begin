@@ -30,5 +30,5 @@ def assert_support_files(dir)
 end
 
 def file_exists?(*args)
-  check_file_presence([args.reduce { |base, file| File.join(base, file) }], true)
+  check_file_presence([args.reduce { |a, e| File.join(a, e) }], true)
 end
