@@ -1,5 +1,5 @@
 #Begin
-[![Build Status](https://travis-ci.org/neverstopbuilding/begin.png?branch=master)](https://travis-ci.org/neverstopbuilding/begin) [![Code Climate](https://codeclimate.com/github/neverstopbuilding/begin.png)](https://codeclimate.com/github/neverstopbuilding/begin)[![Gem Version](https://badge.fury.io/rb/begin.png)](http://badge.fury.io/rb/begin)
+[![Build Status](https://travis-ci.org/neverstopbuilding/begin.png)](https://travis-ci.org/neverstopbuilding/begin) [![Code Climate](https://codeclimate.com/github/neverstopbuilding/begin.png)](https://codeclimate.com/github/neverstopbuilding/begin)[![Gem Version](https://badge.fury.io/rb/begin.png)](http://badge.fury.io/rb/begin)
 
 > **Given** I want to start writing some code.
 >
