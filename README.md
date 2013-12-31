@@ -31,6 +31,14 @@ That's all there is too it, right now these are included and configured:
 - Guard
 - RVM
 
+###Install
+
+    gem install begin
+
+Or for you rvm users:
+
+    rvm @global do gem install begin
+
 ###Setup and Configuration
 
 These options are available:
