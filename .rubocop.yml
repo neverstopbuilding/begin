@@ -14,7 +14,7 @@ AllCops:
   Includes:
     - Rakefile
     - Gemfile
-    - config.ru
   Excludes:
     - lib/public/**
     - build/**
+    - vendor/**
