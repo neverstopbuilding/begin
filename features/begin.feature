@@ -15,6 +15,18 @@ Feature: Create default package
     And the file "mypackage/README.md" should contain "Mypackage Documentation"
     And the file "mypackage/README.md" should not contain "Build Status"
 
-Scenario: Create package with readme icons
+  Scenario: Create a package with a malformed name
+    Given I run `bundle exec begin "mY aWesome Work"`
+    Then a directory named "mY aWesome Work" should not exist
+    And a directory named "my_awesome_work" should exist
+    And the file "my_awesome_work/.ruby-gemset" should contain "my_awesome_work"
+
+  Scenario: Create a package with a dashy name
+    Given I run `bundle exec begin "mY-aWesome-Work"`
+    Then a directory named "mY-aWesome-Work" should not exist
+    And a directory named "my_awesome_work" should exist
+    And the file "my_awesome_work/.ruby-gemset" should contain "my_awesome_work"
+
+  Scenario: Create package with readme icons
     Given I run `bundle exec begin mypackage --github_user=myuser`
     And the file "mypackage/README.md" should contain "Build Status"
