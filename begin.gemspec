@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.1.1'
   spec.add_development_dependency 'aruba', '~> 0.5.3'
   spec.add_development_dependency 'rspec', '~> 2.8.0'
-  spec.add_development_dependency 'cucumber', '~> >= 0'
+  spec.add_development_dependency 'cucumber', '>= 0'
   spec.add_development_dependency 'bundler', '~> 1.0'
   spec.add_development_dependency 'rubocop', '~> 0.16.0'
 end
